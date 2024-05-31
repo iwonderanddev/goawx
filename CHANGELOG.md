@@ -1,3 +1,10 @@
+# [0.21.0](https://github.com/denouche/goawx/compare/v0.20.1...v0.21.0) (2024-05-31)
+
+
+### Features
+
+* Merge various fix from community ([#32](https://github.com/denouche/goawx/issues/32)) ([fb9f104](https://github.com/denouche/goawx/commit/fb9f104fbd76131fb32b0426317435b0892b5e0c))
+
 ## [0.20.1](https://github.com/denouche/goawx/compare/v0.20.0...v0.20.1) (2023-12-10)
 
 
