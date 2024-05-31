@@ -1,3 +1,10 @@
+## [0.21.1](https://github.com/denouche/goawx/compare/v0.21.0...v0.21.1) (2024-05-31)
+
+
+### Bug Fixes
+
+* update ci and make a release to test it ([5ace951](https://github.com/denouche/goawx/commit/5ace9511bac9f49e5d334dbdcb305d92faae8c80))
+
 # [0.21.0](https://github.com/denouche/goawx/compare/v0.20.1...v0.21.0) (2024-05-31)
 
 
