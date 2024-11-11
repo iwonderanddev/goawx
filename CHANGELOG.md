@@ -1,3 +1,10 @@
+## [0.22.0](https://github.com/denouche/goawx/compare/v0.21.0...v0.21.1) (2024-11-11)
+
+
+### Features
+
+* Implements workflow nodes relationships
+
 ## [0.21.1](https://github.com/denouche/goawx/compare/v0.21.0...v0.21.1) (2024-05-31)
 
 

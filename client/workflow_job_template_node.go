@@ -109,3 +109,54 @@ func (jt *WorkflowJobTemplateNodeService) DeleteWorkflowJobTemplateNode(id int) 
 
 	return result, nil
 }
+
+// AssociateNodeRelationship creates a relationship between nodes of the specified type
+func (jt *WorkflowJobTemplateNodeService) AssociateNodeRelationship(sourceNodeID int, targetNodeID int, relationType string) error {
+    endpoint := fmt.Sprintf("%s%d/%s/", workflowJobTemplateNodeAPIEndpoint, sourceNodeID, relationType)
+    payload, err := json.Marshal(map[string]int{"id": targetNodeID})
+    if err != nil {
+        return err
+    }
+
+    resp, err := jt.client.Requester.PostJSON(endpoint, bytes.NewReader(payload), nil, nil)
+    if err != nil {
+        return err
+    }
+
+    return CheckResponse(resp)
+}
+
+func (jt *WorkflowJobTemplateNodeService) DisassociateNodeRelationship(sourceNodeID int, targetNodeID int, relationType string) error {
+    endpoint := fmt.Sprintf("%s%d/%s/", workflowJobTemplateNodeAPIEndpoint, sourceNodeID, relationType)
+    payload, err := json.Marshal(map[string]interface{}{
+        "id":           targetNodeID,
+        "disassociate": true,
+    })
+    if err != nil {
+        return err
+    }
+
+    resp, err := jt.client.Requester.PostJSON(endpoint, bytes.NewReader(payload), nil, nil)
+    if err != nil {
+        return err
+    }
+
+    return CheckResponse(resp)
+}
+
+// GetNodeRelationships gets all related nodes of a specific type for a given node
+func (jt *WorkflowJobTemplateNodeService) GetNodeRelationships(nodeID int, relationType string) ([]*WorkflowJobTemplateNode, error) {
+    endpoint := fmt.Sprintf("%s%d/%s/", workflowJobTemplateNodeAPIEndpoint, nodeID, relationType)
+    result := new(ListWorkflowJobTemplateNodesResponse)
+    
+    resp, err := jt.client.Requester.GetJSON(endpoint, result, nil)
+    if err != nil {
+        return nil, err
+    }
+
+    if err := CheckResponse(resp); err != nil {
+        return nil, err
+    }
+
+    return result.Results, nil
+}
